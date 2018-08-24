@@ -6,14 +6,13 @@ CREATE PROCEDURE InsertUpdate
 @Id  int,
 @Name VARCHAR(50)		
 
-AS
+ AS
+ BEGIN
 
-  BEGIN
-
-	  -- SET NOCOUNT ON to prevent extra messages Showing Number of affected rows
+      -- SET NOCOUNT ON to prevent extra messages Showing Number of affected rows
       SET NOCOUNT ON;
 
-      IF EXISTS (SELECT 1 FROM  Users  WHERE  User_Id = @Id)				--check if User with Id already exist
+      IF EXISTS (SELECT 1 FROM  Users  WHERE  User_Id = @Id)	 --check if User with Id already exist
         UPDATE Users													
         SET Name = @Name WHERE User_Id=@Id
 
